@@ -2,6 +2,7 @@ import pygame
 from constants import *
 from player import Player
 from asteroids import Asteroids
+from asteroidfield import AsteroidField
 
 def main():
     pygame.init
@@ -14,8 +15,10 @@ def main():
 
     Player.containers = (updatable, drawable)
     Asteroids.containers = (astroids, updatable, drawable)
+    AsteroidField.containers =(updatable)
     
     player = Player(SCREEN_WIDTH / 2, SCREEN_HEIGHT / 2)
+    asteroid_field = AsteroidField()
     
     dt = 0
     
