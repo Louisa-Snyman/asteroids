@@ -14,13 +14,14 @@ class Asteroids(CircleShape):
 
     def split(self):
         self.kill()
-        if self.radius <= ASTEROID_MIN_RADIUS:
+        if self.radius == ASTEROID_MIN_RADIUS:
             return
-        random_angle = random.uniform(20, 50)
-        vector_1 = pygame.math.Vector2.rotate(self.velocity, random_angle)
-        vector_2 = pygame.math.Vector2.rotate(self.velocity, random_angle * -1)
-        new_radius = self.radius - ASTEROID_MIN_RADIUS
-        asteroid_1 = Asteroids(self.position.x, self.position.y, new_radius)
-        asteroid_2 = Asteroids(self.position.x, self.position.y, new_radius)
-        asteroid_1.velocity = vector_1 * 1.2
-        asteroid_2.velocity = vector_2 * 1.2
+        else:
+            random_angle = random.uniform(20, 50)
+            vector_1 = pygame.math.Vector2.rotate(self.velocity, random_angle)
+            vector_2 = pygame.math.Vector2.rotate(self.velocity, random_angle * -1)
+            new_radius = self.radius - ASTEROID_MIN_RADIUS
+            asteroid_1 = Asteroids(self.position.x, self.position.y, new_radius)
+            asteroid_2 = Asteroids(self.position.x, self.position.y, new_radius)
+            asteroid_1.velocity = vector_1 * 1.2
+            asteroid_2.velocity = vector_2 * 1.2
